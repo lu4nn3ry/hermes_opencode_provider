@@ -20,7 +20,7 @@ hermes model            # pick "OpenCode ACP"
 # or pin it directly
 hermes config set model.provider opencode-acp
 hermes config set model.base_url acp://opencode
-hermes config set model.default "opencode/big-pickle"
+hermes config set model.default "opencode/muse-spark-1.3-contributor-free"
 ```
 
 ## Requirements
@@ -30,6 +30,21 @@ hermes config set model.default "opencode/big-pickle"
 - OpenCode authenticated (`opencode auth login` / `opencode auth list` shows
   at least one provider). `hermes auth status opencode-acp` reports
   structural availability (binary resolves); the subprocess owns real auth.
+
+## Current config (verified 2026-10-16)
+
+- Hermes Agent `v0.22.2` (stable), OpenCode `v2.0.30`,
+  `@opencode-ai/plugin@1.18.33`.
+- Hermes model: `provider: opencode-acp`, `base_url: acp://opencode`,
+  live model `opencode/muse-spark-1.3-contributor-free`
+  (fallback `opencode/big-pickle` — both advertised by `opencode models`).
+- OpenCode auth: OpenAI (OAuth, stored), OpenRouter (stored),
+  Anthropic + Nvidia (env keys).
+- `~/.config/opencode/opencode.jsonc` is schema-only (`{}`); `cli.json`
+  sets `session.permissions: autoaccept`, `session.thinking: hide`.
+- Plugin lives in `$HERMES_HOME/plugins/model-providers/opencode-acp/`;
+  after pulling, reinstall or restart Hermes so the new
+  `fallback_models` take effect.
 
 ## Overrides
 

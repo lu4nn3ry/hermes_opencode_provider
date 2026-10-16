@@ -99,7 +99,7 @@ opencode_acp = OpenCodeACPProfile(
     process_command_env_vars=("HERMES_OPENCODE_ACP_COMMAND", "OPENCODE_CLI_PATH"),
     process_args_env_var="HERMES_OPENCODE_ACP_ARGS",
     # Shown in pickers only when the live subprocess probe fails.
-    fallback_models=("opencode/big-pickle",),
+    fallback_models=("opencode/muse-spark-1.3-contributor-free", "opencode/big-pickle"),
 )
 
 register_provider(opencode_acp)
